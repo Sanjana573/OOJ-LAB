@@ -1,37 +1,45 @@
-class NewThread implements Runnable
-{
-    String name;
-    int x;
-    long time1;
-    Thread t;
-    NewThread(String threadname,long time,int x1)
-{
-name=threadname;
-x=x1;
-time1=time;
-t= new Thread(this,name);
-t.start();
-}
-public void run()
-{
-    try{
-        for(int i=x;i>0;i--)
-    {
-        System.out.println(name);
-        Thread.sleep(time1);
+class BMS extends Thread {
+
+    synchronized public void run() {
+        for (int i = 0; i < 5; i++)
+
+            try {
+                sleep(10000);
+                System.out.println("bms college of engineering");
+
+            } catch (InterruptedException e)
+
+            {
+                System.out.println(e);
+            }
+
     }
 }
-catch (InterruptedException e)
-{
-    System.out.println(name + "Interrupted");
-}
-}
-}
-class threading
-{
-    public static void main(String args[])
-    {
-        new NewThread("BMS College of engineering",10000,2);
-        new NewThread("CSE",2000,10);
+
+class CSE extends Thread {
+    synchronized public void run() {
+        for (int i = 0; i < 5; i++)
+
+            try {
+
+                sleep(2000);
+                System.out.println("cse");
+
+            } catch (InterruptedException e)
+
+            {
+                System.out.println(e);
+            }
     }
+}
+
+class Threading {
+    public static void main(String args[]) {
+        BMS B = new BMS();
+        CSE C = new CSE();
+        B.start();
+        C.start();
+
+    }
+
 }
