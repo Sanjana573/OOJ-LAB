@@ -1,5 +1,5 @@
 import java.util.*;
-import java.math.*;
+import java.Math.*;
 public class quadratic
 {
 public static void main(String args[])
